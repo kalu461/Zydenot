@@ -1,4 +1,4 @@
-name: DEVXRDP – RDP + Tailscale (5 Hours)
+name: DEVXRDP
 
 on:
   workflow_dispatch:
