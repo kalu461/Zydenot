@@ -1,33 +1,22 @@
-#Install Chrome Remote Desktop: 
- 
-wget https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb
- 
-sudo apt install ./chrome-remote-desktop_current_amd64.deb
- 
-#Install XFCE Desktop Environment:
- 
-sudo DEBIAN_FRONTEND=noninteractive \
-    apt install --assume-yes xfce4 desktop-base dbus-x11 xscreensaver
- 
-#Create a Google Chrome Remote Desktop Session:
- 
-sudo bash -c 'echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" > /etc/chrome-remote-desktop-session'
- 
-#Disable Default Display Service:
- 
-sudo systemctl disable lightdm.service
- 
- 
-#Open Browser and Search Google Remote Desktop
-#Click on install wia ssh
-#Follow Process
-#Login into remote desktop
-#Install Chrome Browser: 
- 
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
- 
-sudo apt install ./google-chrome-stable_current_amd64.deb
- 
-#Show Details of CPU, RAM etc.
- 
-sudo apt install gnome-system-monitor
+name: Programmingwithkumaresan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: windows-latest
+    timeout-minutes: 9999
+    
+    steps:
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://gitlab.com/chamod12/lm_win-10_github_rdp/-/raw/main/Downloads.bat" -OutFile "Downloads.bat"
+          cmd /c Downloads.bat
+
+      - name: Connect to LiteManager
+        run: cmd /c show.bat
+
+      - name: Time Counter
+        run: cmd /c loop.bat
